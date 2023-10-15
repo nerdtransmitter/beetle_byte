@@ -10,9 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_15_135930) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_15_141239) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.date "start_date"
+    t.date "target_date"
+    t.date "actual_end_date"
+    t.bigint "created_by_id", null: false
+    t.bigint "updated_by_id"
+    t.bigint "lead_dev_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["created_by_id"], name: "index_projects_on_created_by_id"
+    t.index ["lead_dev_id"], name: "index_projects_on_lead_dev_id"
+    t.index ["updated_by_id"], name: "index_projects_on_updated_by_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -29,4 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_15_135930) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "projects", "users", column: "created_by_id"
+  add_foreign_key "projects", "users", column: "lead_dev_id"
+  add_foreign_key "projects", "users", column: "updated_by_id"
 end
