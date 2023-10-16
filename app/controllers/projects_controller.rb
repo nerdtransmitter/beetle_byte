@@ -10,6 +10,9 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def new
+  end
+
   def update
     @project = Project.find(params[:id])
 
@@ -24,6 +27,12 @@ class ProjectsController < ApplicationController
       # Handle validation errors or other issues
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    project = Project.find(params[:id])
+    project.destroy
+    redirect_to projects_path, status: :see_other
   end
 
   private
