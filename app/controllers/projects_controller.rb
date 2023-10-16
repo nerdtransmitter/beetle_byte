@@ -17,7 +17,6 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(project_params)
   end
 
   def index
