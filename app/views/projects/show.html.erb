@@ -2,4 +2,9 @@
   <%= @project.title %>
   Start: <%= @project.start_date %>
   End: <%= @project.target_date %>
+
+  <%= link_to "Delete",
+  project_path(@project),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
 </div>
