@@ -1,0 +1,17 @@
+<% if user_signed_in? %>
+  <%= form_with model: project do |f|%>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    <%= f.label :start_date %>
+    <%= f.date_field :start_date %>
+    <%= f.label :target_date %>
+    <%= f.date_field :target_date %>
+    <%= f.submit %>
+  <% end %>
+  <% else %>
+    <%= link_to 'Please sign in', new_user_session_path %>
+
+  <% end %>
+

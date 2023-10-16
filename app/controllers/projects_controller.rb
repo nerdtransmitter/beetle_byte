@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_action :set_project, only: %i[show update edit destroy]
+
   def create
     @project = Project.new(project_params)
     @project.created_by = current_user
@@ -11,11 +13,21 @@ class ProjectsController < ApplicationController
   end
 
   def new
+    @project = Project.new
+  end
+
+  def show
+    @project = Project.find(project_params)
+  end
+
+  def index
+    @projects = Project.all
+  end
+
+  def edit
   end
 
   def update
-    @project = Project.find(params[:id])
-
     if @project.update(project_params)
       # Check if any attributes have changed
       if @project.saved_changes?
@@ -30,14 +42,17 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    project = Project.find(params[:id])
-    project.destroy
+    @project.destroy
     redirect_to projects_path, status: :see_other
   end
 
   private
 
   def project_params
-    params.require(:title, :description).permit(:start_date, :target_date, :actual_end_date)
+    params.require(:project).permit(:title, :description, :start_date, :target_date)
+  end
+
+  def set_project
+    @project = Project.find(params[:id])
   end
 end
