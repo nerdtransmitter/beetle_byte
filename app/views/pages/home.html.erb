@@ -1,6 +1,10 @@
 <div class="container">
   Home Page
-  <h2>Hi <%= current_user.first_name %></h2>
+  <% if user_signed_in? %>
+    <h2>Hi <%= @user.first_name %></h2>
+  <% else %>
+    <%= link_to 'Sign in', new_user_session_path %>
+  <% end %>
   <%= link_to 'New Project', new_project_path %>
   <%= link_to 'Edit Profile', edit_user_registration_path %>
 </div>
