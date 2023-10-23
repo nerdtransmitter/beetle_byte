@@ -61,6 +61,7 @@ gem 'jquery-rails'
 
 # Use jquery-ui for pretty UI
 gem 'jquery-ui-rails'
+gem 'webpacker'
 
 
 group :development, :test do
