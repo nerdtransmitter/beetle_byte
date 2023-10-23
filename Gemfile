@@ -56,6 +56,13 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem 'psych', '~>3.0'
 gem 'devise'
 gem 'pundit'
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+
+# Use jquery-ui for pretty UI
+gem 'jquery-ui-rails'
+gem 'webpacker'
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
