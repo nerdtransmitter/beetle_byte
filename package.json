@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@hotwired/turbo-rails": "^7.3.0",
+    "@popperjs/core": "^2.11.8",
+    "boostrap": "^2.0.0",
+    "jquery": "^3.7.1"
+  }
+}
