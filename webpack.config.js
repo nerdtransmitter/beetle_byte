@@ -1,5 +1,5 @@
-const path    = require('path')
-const webpack = require("webpack")
+const path    = require('path');
+const webpack = require("webpack");
 
 module.exports = {
   mode: "development",
@@ -17,4 +17,5 @@ module.exports = {
       maxChunks: 1
     }),
   ],
-}
+  node: false,
+};
