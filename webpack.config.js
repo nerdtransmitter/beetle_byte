@@ -17,5 +17,9 @@ module.exports = {
       maxChunks: 1
     }),
   ],
-  node: false,
+  node: {
+    __dirname: false,
+    __filename: false,
+    global: false,
+  },
 };
