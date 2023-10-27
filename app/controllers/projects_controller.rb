@@ -1,19 +1,21 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: %i[show update edit destroy]
 
+  def new
+    @project = Project.new
+    authorize @project, :new?
+  end
+
   def create
     @project = Project.new(project_params)
     @project.created_by = current_user
+    authorize @project, :create?
 
     if @project.save
       redirect_to projects_path, notice: "Your project was saved"
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def new
-    @project = Project.new
   end
 
   def show
@@ -24,6 +26,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    authorize @project, :edit?
   end
 
   def update
@@ -38,6 +41,7 @@ class ProjectsController < ApplicationController
       # Handle validation errors or other issues
       render :new, status: :unprocessable_entity
     end
+    authorize @project, :update?
   end
 
   def destroy
