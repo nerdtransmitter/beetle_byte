@@ -3,4 +3,3 @@
 import '@hotwire/turbo-rails'
 import 'bootstrap'
 import 'confetti'
-
