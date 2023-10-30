@@ -50,7 +50,7 @@ gem "sassc-rails"
 # gem "image_processing", "~> 1.2"
 
 # Bootstrap related
-gem "bootstrap" # For CSS only
+gem 'bootstrap', '~> 5.3.2'
 
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
