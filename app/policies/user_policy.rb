@@ -2,10 +2,17 @@ class UserPolicy < ApplicationPolicy
   attr_reader :user, :user_to_update
 
   class Scope < Scope
-    # NOTE: Be explicit about which records you allow access to!
-    # def resolve
-    #   scope.all
-    # end
+    def resolve
+      scope.all
+    end
+  end
+
+  def index?
+    user.admin?
+  end
+
+  def show?
+    user.admin? || record == user
   end
 
   def initialize(user, user_to_update)

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+
   # Only admins can update and remove roles.
   # But users can see their own profile and other users' profiles.
   def show
