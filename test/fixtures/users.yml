@@ -1,0 +1,22 @@
+
+# Fixtures for user_policy_test.rb
+admin:
+  id: 1
+  first_name: Admin
+  last_name: User
+  email: admin@example.com
+  admin: true
+
+user:
+  id: 2
+  first_name: Regular
+  last_name: User
+  email: user@example.com
+  admin: false
+
+other_user:
+  id: 3
+  first_name: Other
+  last_name: User
+  email: other@example.com
+  admin: false
