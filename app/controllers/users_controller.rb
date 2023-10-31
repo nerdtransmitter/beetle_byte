@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     authorize @user
 
     if @user.update(user_params)
-      redirect_to @user, notice: "User updated successfully."
+      redirect_to user_path(@user), notice: "User updated successfully."
     else
       render :edit
     end

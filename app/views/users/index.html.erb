@@ -9,6 +9,9 @@
       <th>Role</th>
       <th>Admin</th>
       <th>Profile</th>
+      <% if current_user.admin? %>
+        <th>Assign Role</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -20,7 +23,14 @@
         <td><%= user.role %></td>
         <td><%= user.admin? ? "Yes" : "No" %></td>
         <td><%= link_to 'Show', user %></td>
-        
+        <% if current_user.admin? %>
+          <td>
+            <%= form_for user, url: user_path(user), method: :patch do |f| %>
+              <%= f.select :role, options_for_select([['Project Manager', 'project_manager'], ['Lead Developer', 'lead_developer'], ['Developer', 'developer']], selected: user.role) %>
+              <%= f.submit 'Update Role' %>
+            <% end %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
