@@ -7,17 +7,18 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
+  def initialize(user, user_to_update)
+    @user = user
+    @user_to_update = user_to_update
+  end
+
   def index?
     user.admin?
   end
 
   def show?
-    user.admin? || record == user
-  end
-
-  def initialize(user, user_to_update)
-    @user = user
-    @user_to_update = user_to_update
+    user.admin? || user == record
+    # true
   end
 
   def update?
