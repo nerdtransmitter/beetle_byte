@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-hashed_password = BCrypt::Password.create('password')
+# hashed_password = BCrypt::Password.create('password')
 
 # USERS
 User.destroy_all
