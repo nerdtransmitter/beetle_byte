@@ -8,12 +8,21 @@
     <%= javascript_importmap_tags %>
     <%# Alpine.js %>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <%# Google Fonts %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+      .font-family-carla { font-family: karla !important; }
+    </style>
     <%# Tailwind CSS %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
   </head>
 
-  <body class="bg-gray-200">
+  <body class="bg-gray-200 font-family-karla">
     <%= render 'shared/navbar' %>
     <%= yield %>
     <%= render "shared/flashes" %>
