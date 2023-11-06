@@ -14,9 +14,10 @@
 
 /* Your custom styles */
 
-// @import "tailwindcss/base";
-// @import "tailwindcss/components";
-// @import "tailwindcss/utilities";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/forms";
+@import "tailwindcss/utilities";
 
 html {
   font-family: "Karla", "sans-serif" !important;
