@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
     <title>BeetleByte</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= javascript_importmap_tags %>
+    <%# Alpine.js %>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <%# Tailwind CSS %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
   </head>
 
-  <body>
+  <body class="bg-gray-200">
     <%= render 'shared/navbar' %>
     <%= yield %>
     <%= render "shared/flashes" %>

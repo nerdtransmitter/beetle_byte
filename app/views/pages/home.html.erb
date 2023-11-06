@@ -2,7 +2,9 @@
   Home Page
   <% if user_signed_in? %>
     <h2>Hi <%= @user.first_name %></h2>
-    change
+    <button class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700">
+      Click me
+    </button>
   <% else %>
     <%= link_to 'Sign in', new_user_session_path %>
   <% end %>

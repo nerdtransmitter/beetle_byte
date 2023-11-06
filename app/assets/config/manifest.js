@@ -4,3 +4,4 @@
 //= link_tree ../../../vendor/javascript .js
 //= link application.scss
 
+//= link_tree ../builds
