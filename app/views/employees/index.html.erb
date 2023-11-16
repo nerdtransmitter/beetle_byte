@@ -51,7 +51,7 @@
                   <%= employee.admin? ? "Yes" : "No" %>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                  <%= link_to 'Show', employee_path(employee) %>
+                  <%= link_to 'Profile', employee_path(employee) %>
                 </td>
                 <% if current_user.admin? %>
                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
