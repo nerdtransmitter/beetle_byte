@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new
     authorize @project, :new?
+    @user = User.find(params[:user]) if params[:user]
   end
 
   def create
@@ -19,10 +20,12 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    authorize @project, :show?
   end
 
   def index
-    @projects = Project.all
+    @projects = policy_scope(Project) # Project.all
+    # @projects = Project.all
   end
 
   def edit
@@ -57,5 +60,6 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = Project.find(params[:id])
+    authorize @project # For Pundit, authorize individual instances in other actions
   end
 end
