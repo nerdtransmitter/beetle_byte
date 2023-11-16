@@ -1,33 +1,36 @@
-class UsersController < ApplicationController
+class EmployeesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_employee, only: [:show, :update_role]
 
-  # Only admins can update and remove roles.
-  # But users can see their own profile and other users' profiles.
-  def show
-    @user = User.find(params[:id])
-    authorize @user
-  end
-
+  # Users can see their own profile and other users' profiles.
   def index
-    @users = policy_scope(User)
-    authorize @users
+    @employees = policy_scope(User)
+    authorize @employees
   end
 
-  def update
-    @user = User.find(params[:id])
-    authorize @user
+  def show
+    authorize @employee
+  end
 
-    if @user.update(user_params)
-      redirect_to employee_path(@user), notice: "User updated successfully."
+  # But only admins can update and remove roles.
+  def update_role
+    authorize @employee
+
+    if @employee.update(user_params)
+      redirect_to employees_path, notice: "Employee updated successfully." # Updates role in `users`` table
     else
-      render :edit
+      render :index, status: :unprocessable_entity
     end
   end
 
   private
 
   def user_params
-    policy = UserPolicy.new(current_user, @user)
+    policy = UserPolicy.new(current_user, @employee)
     params.require(:user).permit(policy.permitted_attributes)
+  end
+
+  def set_employee
+    @employee = User.find(params[:id])
   end
 end
