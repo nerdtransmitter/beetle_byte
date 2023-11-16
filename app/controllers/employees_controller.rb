@@ -17,7 +17,7 @@ class EmployeesController < ApplicationController
     authorize @employee
 
     if @employee.update(user_params)
-      redirect_to employees_path, notice: "Employee updated successfully." # Updates role in `users`` table
+      redirect_to employees_path, notice: "Employee updated successfully." # Updates role in `users` table
     else
       render :index, status: :unprocessable_entity
     end
