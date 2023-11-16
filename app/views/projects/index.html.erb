@@ -1,4 +1,20 @@
-<h1>Projects Index</h1>
+<h1>All Projects</h1>
+<div class=""></div>
+<ol>
+  <% @projects.each_with_index do |project, index| %>
+    <li>
+      <%= link_to project.title, project_path(project), class:  %>
+      <span><%= index %></span>
+      <%# <%= link_to 'X', destroy_project_path(project) %>
+      <%= link_to project,
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+        class: "btn ml-4" do %>
+        X
+      <% end %>
+    </li>
+  <% end %>
+</ol>
+div
 <% @projects.each_with_index do |project, index| %>
-  <%= link_to project.title, project_path(project) %>
+
 <% end %>
