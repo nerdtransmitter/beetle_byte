@@ -65,6 +65,8 @@ Rails.application.configure do
   # To turn on inline source maps in development
   config.sass.inline_source_maps = true
 
+  config.assets.compile = true
+
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
