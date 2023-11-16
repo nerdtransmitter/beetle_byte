@@ -21,9 +21,12 @@
 
   </head>
 
-  <body class="bg-gray-200 font-family-karla">
+  <body class="bg-gray-200 font-family-karla flex flex-col h-screen justify-between">
     <%= render 'shared/navbar' %>
-    <%= yield %>
+    <div class="container mx-6">
+      <%= yield %>
+    </div>
     <%= render "shared/flashes" %>
+    <%= render "shared/footer" %>
   </body>
 </html>
