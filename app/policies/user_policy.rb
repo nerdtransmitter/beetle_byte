@@ -27,7 +27,7 @@ class UserPolicy < ApplicationPolicy
 
   # Users can update their profile except for role, which is only for admins.
   def permitted_attributes
-    if user.admin?
+    if user.admin? || user.project_manager?
       [:role]
     else
       [:first_name, :last_name, :email, :password, :password_confirmation]

@@ -23,6 +23,11 @@ class EmployeesController < ApplicationController
     end
   end
 
+  # Make a user a lead developer
+  # def make_lead
+  #   @employee.lead_developer!
+  # end
+
   private
 
   def user_params
