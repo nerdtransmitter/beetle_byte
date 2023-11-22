@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :projects
+  has_many :created_tickets, class_name: 'Ticket', foreign_key: 'created_by_id'
+  has_many :modified_tickets, class_name: 'Ticket', foreign_key: 'modified_by_id'
+  has_many :dev_tickets, class_name: 'Ticket', foreign_key: 'dev_id'
   # has_one_attached :photo
 
 

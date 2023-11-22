@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_27_152650) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_22_112055) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,6 +28,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_27_152650) do
     t.index ["created_by_id"], name: "index_projects_on_created_by_id"
     t.index ["lead_dev_id"], name: "index_projects_on_lead_dev_id"
     t.index ["updated_by_id"], name: "index_projects_on_updated_by_id"
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.string "status"
+    t.integer "priority"
+    t.string "summary"
+    t.text "details"
+    t.bigint "created_by_id", null: false
+    t.bigint "modified_by_id"
+    t.bigint "dev_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["created_by_id"], name: "index_tickets_on_created_by_id"
+    t.index ["dev_id"], name: "index_tickets_on_dev_id"
+    t.index ["modified_by_id"], name: "index_tickets_on_modified_by_id"
+    t.index ["project_id"], name: "index_tickets_on_project_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -49,4 +66,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_27_152650) do
   add_foreign_key "projects", "users", column: "created_by_id"
   add_foreign_key "projects", "users", column: "lead_dev_id"
   add_foreign_key "projects", "users", column: "updated_by_id"
+  add_foreign_key "tickets", "projects"
+  add_foreign_key "tickets", "users", column: "created_by_id"
+  add_foreign_key "tickets", "users", column: "dev_id"
+  add_foreign_key "tickets", "users", column: "modified_by_id"
 end
