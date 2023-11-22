@@ -1,7 +1,23 @@
 class TicketPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      user.admin? ? scope.all : scope.where(user: user)
+      if user.admin?
+        # Admins can see all tickets
+        scope.all
+      elsif user_lead_dev_projects.any?
+        # Users with lead_dev role can see tickets in their lead_dev projects
+        scope.where(project_id: user_lead_dev_projects)
+      else
+        # Regular users can see only their own tickets
+        scope.where('created_by_id = ? OR dev_id = ?', user.id, user.id)
+      end
+    end
+
+    private
+
+    def user_lead_dev_projects
+      # Retrieve the IDs of projects where the user is the lead developer
+      Project.where(lead_dev_id: user.id).pluck(:id)
     end
   end
 

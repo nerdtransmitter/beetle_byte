@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_ticket, only: %i[show edit update destroy]
+  before_action :set_ticket, only: %i[show edit update destroy close_ticket]
   before_action :set_project, only: %i[new create edit update]
   before_action :authorize_ticket, only: %i[new create show edit update destroy]
 
@@ -46,6 +46,15 @@ class TicketsController < ApplicationController
     @ticket.destroy
     redirect_to tickets_path, status: :see_other
   end
+
+  def close_ticket
+    if @ticket.update(ticket_close_params)
+      redirect_to @ticket, notice: 'Ticket was successfully closed.'
+    else
+      render :edit
+    end
+  end
+
 
   private
 
