@@ -1,10 +1,11 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_project, only: %i[show update edit destroy]
 
   def new
     @project = Project.new
     authorize @project, :new?
-    @user = User.find(params[:user]) if params[:user]
+    # @user = User.find(params[:user]) if params[:user]
   end
 
   def create
@@ -25,7 +26,6 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = policy_scope(Project) # Project.all
-    # @projects = Project.all
   end
 
   def edit

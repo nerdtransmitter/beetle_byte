@@ -6,14 +6,20 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def create?
-    user.admin? || user.project_manager?
+    user.admin? || user.role == 'Project Manager'
   end
 
   def update?
-    user.admin? || user.project_manager?
+    user.admin? || user.role == 'Project Manager' 
   end
 
   def destroy?
-    user.admin? || user.project_manager?
+    user.admin? || user.role == 'Project Manager' 
+  end
+
+  private
+
+  def project
+    @record = project
   end
 end

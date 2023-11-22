@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: beetle_byte_production
   username: beetle_byte
+  database: beetle_byte_production
   password: <%= ENV["BEETLE_BYTE_DATABASE_PASSWORD"] %>
