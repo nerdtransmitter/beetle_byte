@@ -24,7 +24,7 @@ class TicketsController < ApplicationController
   end
 
   def index
-    @tickets = policy_scope(Ticket) # ticket.all
+    @tickets = policy_scope(Ticket)
   end
 
   def edit
