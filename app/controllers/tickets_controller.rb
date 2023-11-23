@@ -23,8 +23,13 @@ class TicketsController < ApplicationController
   def show
   end
 
-  def index
+  def index # This is the index of all tickets for a project
     @tickets = policy_scope(Ticket)
+  end
+
+  def all_tickets # This is the index of all tickets for all projects
+    @tickets = policy_scope(Ticket)
+    render :index
   end
 
   def edit

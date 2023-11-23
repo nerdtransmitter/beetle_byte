@@ -1,23 +1,25 @@
 class Ticket < ApplicationRecord
   before_save :set_default_status, if: -> { status.nil? }
 
+  # ENUMS
+  enum status: { open: 0, in_progress: 1, in_qa: 2, ready_for_release: 3, closed: 4, reopened: 5 }
+  enum priority: { critical: 0, high: 1, medium: 2, low: 3 }
+
+  # VALIDATIONS
+  validates :summary, presence: true
+  validates :project, presence: true
+  validates :status, inclusion: { in: statuses.keys }
+  validates :priority, inclusion: { in: priorities.keys }
+
+  # ASSOCIATIONS
   belongs_to :project
   belongs_to :created_by, class_name: 'User', foreign_key: 'created_by_id'
   belongs_to :modified_by, class_name: 'User', foreign_key: 'modified_by_id', optional: true
   belongs_to :dev, class_name: 'User', foreign_key: 'dev_id', optional: true
 
-  validates :summary, presence: true
-  validates :project, presence: true
-
-  # Mapping integer values to status names
-  enum status: { open: 0, in_progress: 1, pending: 2, closed: 3, rejected: 4, reopened: 5 }
-  validates :status, inclusion: { in: [0, 1, 2, 3, 4, 5] }
-  # Mapping integer values to priority names
-  enum priority: { unassigned: nil, critical: 1, high: 2, medium: 3, low: 4 }
-  validates :priority, inclusion: { in: [nil, 1, 2, 3, 4] }
-
+  # CALLBACKS
   # Set default status to 'Open' if none given
   def set_default_status
-    self.status = 'Open'
+    self.status = 0
   end
 end
