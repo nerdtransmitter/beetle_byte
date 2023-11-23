@@ -79,4 +79,6 @@ Ticket.create!([
   { project_id: project.id, status: "Open", priority: 3, summary: "Write documentation", details: "Write documentation for BeetleByte for users and developers.", created_by_id: lead_dev1, dev_id: dev.id },
 ])
 
+# Create policies for tickets
+# Generate tests for policies
 puts "4 tickets created!"

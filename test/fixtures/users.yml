@@ -20,3 +20,37 @@ other_user:
   last_name: User
   email: other@example.com
   admin: false
+
+# Fixtures for user_test.rb
+
+one:
+  email: "user1@example.com"
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  first_name: "User"
+  last_name: "One"
+  role: "Project Manager"
+  admin: false
+
+two:
+  email: "user2@example.com"
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  first_name: "User"
+  last_name: "Two"
+  role: "Lead Developer"
+  admin: false
+
+three:
+  email: "user3@example.com"
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  first_name: "User"
+  last_name: "Three"
+  role: "Manager"
+  admin: true
+
+four:
+  email: "user4@example.com"
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  first_name: "User"
+  last_name: "Four"
+  role: "Developer"
+  admin: false

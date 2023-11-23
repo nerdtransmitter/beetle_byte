@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class ProjectPolicyTest < ActiveSupport::TestCase
+  fixtures :users, :projects, :tickets
+  
   def test_scope
   end
 

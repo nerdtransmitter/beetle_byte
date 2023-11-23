@@ -1,7 +1,7 @@
 class TicketPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      return scope.all if user.admin? || user.role == 0
+      return scope.all if user.has_role_or_admin?(:project_manager)
 
       if user_lead_dev_projects.any?
         # Users with lead_dev role can see tickets in their lead_dev projects
@@ -25,7 +25,7 @@ class TicketPolicy < ApplicationPolicy
   end
 
   def show?
-    user.admin? || user.id == ticket.dev_id || user.id == ticket.project.lead_dev_id || user.role == 0
+    user.has_role_or_admin?(:project_manager) || ticket_belongs_to_user? || user.id == ticket.project.lead_dev_id
   end
 
   def create?
@@ -48,7 +48,7 @@ class TicketPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.admin? || user.role == 0 || ticket.created_by_id == user.id
+    user.admin? || user.project_manager? || ticket.created_by_id == user.id
   end
 
   def close_ticket?
@@ -59,5 +59,9 @@ class TicketPolicy < ApplicationPolicy
 
   def ticket
     record
+  end
+
+  def ticket_belongs_to_user?
+    ticket.created_by_id == user.id || ticket.dev_id == user.id
   end
 end
