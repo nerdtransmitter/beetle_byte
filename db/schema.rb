@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_22_151344) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_23_121306) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,8 +25,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_22_151344) do
     t.bigint "lead_dev_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "manager_id"
     t.index ["created_by_id"], name: "index_projects_on_created_by_id"
     t.index ["lead_dev_id"], name: "index_projects_on_lead_dev_id"
+    t.index ["manager_id"], name: "index_projects_on_manager_id"
     t.index ["updated_by_id"], name: "index_projects_on_updated_by_id"
   end
 
@@ -67,6 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_22_151344) do
 
   add_foreign_key "projects", "users", column: "created_by_id"
   add_foreign_key "projects", "users", column: "lead_dev_id"
+  add_foreign_key "projects", "users", column: "manager_id"
   add_foreign_key "projects", "users", column: "updated_by_id"
   add_foreign_key "tickets", "projects"
   add_foreign_key "tickets", "users", column: "created_by_id"
