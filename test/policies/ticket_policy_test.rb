@@ -8,7 +8,7 @@ class TicketPolicyTest < ActiveSupport::TestCase
     @project_manager = users(:one)  # Assuming I have a fixture for project manager
     @lead_dev = users(:two)  # Assuming I have a fixture for lead developer
     @dev = users(:four)  # Assuming I have a fixture for developer
-    @project = projects(:one)  # Assuming I have a fixture for projects
+    @project = projects(:project_one)  # Assuming I have a fixture for projects
     @ticket = tickets(:one)  # Assuming I have a fixture for tickets
     @other_ticket = tickets(:two)  # Assuming I have another ticket fixture
   end
