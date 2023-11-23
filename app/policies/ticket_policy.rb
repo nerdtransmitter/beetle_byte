@@ -30,29 +30,35 @@ class TicketPolicy < ApplicationPolicy
 
   def create?
     # Only the project lead or admin can create tickets
-    user.admin? || user.id == ticket.project.lead_dev_id
+    return true if user.admin?
+    user.id == ticket.project.lead_dev_id
   end
 
   def assign?
     # Only the project lead or admin can assign tickets
-    user.admin? || user.id == ticket.project.lead_dev_id
+    return true if user.admin?
+    user.id == ticket.project.lead_dev_id
   end
 
   def update?
     # Only the assigned developer, or the project lead, or admin can edit ticket details
-    user.admin? || user.id == ticket.dev_id || user.id == ticket.project.lead_dev_id || user.id == ticket.project.manager_id
+    return true if user.admin?
+    user.id == ticket.dev_id || user.id == ticket.project.lead_dev_id || user.id == ticket.project.manager_id
   end
 
   def change_status?
-    user.admin? || user.id == ticket.dev_id || user.id == ticket.project.lead_dev_id || user.id == ticket.project.manager_id
+    return true if user.admin?
+    user.id == ticket.dev_id || user.id == ticket.project.lead_dev_id || user.id == ticket.project.manager_id
   end
 
   def destroy?
-    user.admin? || user.project_manager? || ticket.created_by_id == user.id
+    return true if user.admin?
+    user.project_manager? || ticket.created_by_id == user.id
   end
 
   def close_ticket?
-    user.admin? || user.id == ticket.dev_id || user.id == ticket.project.lead_dev_id || user.id == ticket.project.manager_id
+    return true if user.admin?
+    user.id == ticket.dev_id || user.id == ticket.project.lead_dev_id || user.id == ticket.project.manager_id
   end
 
   private

@@ -48,13 +48,13 @@ class TicketsController < ApplicationController
   end
 
   def close_ticket
+    close_ticket_with_time if params[:ticket][:status] == 3
     if @ticket.update(ticket_close_params)
       redirect_to @ticket, notice: 'Ticket was successfully closed.'
     else
       render :edit
     end
   end
-
 
   private
 
@@ -81,5 +81,14 @@ class TicketsController < ApplicationController
       @ticket.updated_by = current_user
       @ticket.save
     end
+  end
+
+  def ticket_close_params
+    params.require(:ticket).permit(:status, :resolution_summary)
+  end
+
+  # A separate method to update the completed_on attribute when the ticket is closed
+  def close_ticket_with_time
+    @ticket.completed_on = Time.current
   end
 end
