@@ -141,8 +141,8 @@
       <div :class="isOpen ? 'show' : 'hidden'" class="md:flex items-center mt-4 md:mt-0">
         <div class="flex flex-col md:flex-row md:ml-6">
           <%= link_to 'Projects', projects_path, class: "my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-3 md:my-0" %>
-          <a href="#" class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-3 md:my-0">Tickets</a>
-          <a href="#" class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-3 md:my-0">Dashboard</a>
+          <%= link_to 'Tickets', tickets_path, class: "my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-3 md:my-0" %>
+          <%= link_to 'Dashboard', dashboard_path, class: "my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-3 md:my-0" %>
         </div>
       </div>
       <% else %>
