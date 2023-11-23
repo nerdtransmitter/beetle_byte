@@ -7,7 +7,8 @@ class Ticket < ApplicationRecord
   belongs_to :dev, class_name: 'User', foreign_key: 'dev_id', optional: true
 
   validates :summary, presence: true
-
+  validates :project, presence: true
+  
   validates :status, inclusion: { in: ['Open', 'In Progress', 'Pending', 'Closed', 'Rejected', 'Reopened'] }
   validates :priority, inclusion: { in: [nil, 1, 2, 3, 4] }
   # Mapping integer values to priority names
