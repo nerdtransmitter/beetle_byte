@@ -3,13 +3,13 @@ class Ticket < ApplicationRecord
 
   # ENUMS
   enum status: { open: 0, in_progress: 1, in_qa: 2, ready_for_release: 3, closed: 4, reopened: 5 }
-  enum priority: { low: 1, medium: 2, high: 3, critical: 4 }
+  enum priority: { critical: 0, high: 1, medium: 2, low: 3 }
 
   # VALIDATIONS
   validates :summary, presence: true
   validates :project, presence: true
-  validates :status, inclusion: { in: [0, 1, 2, 3, 4, 5] }
-  validates :priority, inclusion: { in: [nil, 1, 2, 3, 4] }
+  validates :status, inclusion: { in: statuses.keys }
+  validates :priority, inclusion: { in: priorities.keys }
 
   # ASSOCIATIONS
   belongs_to :project
@@ -20,6 +20,6 @@ class Ticket < ApplicationRecord
   # CALLBACKS
   # Set default status to 'Open' if none given
   def set_default_status
-    self.status = 'Open'
+    self.status = 0
   end
 end

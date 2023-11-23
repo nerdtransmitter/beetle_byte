@@ -12,7 +12,6 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, length: { minimum: 6 }, if: -> { new_record? || changes[:password_digest] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:password_digest] }
-  validates :admin, presence: true
   validates :role, inclusion: { in: roles.keys }
 
 
