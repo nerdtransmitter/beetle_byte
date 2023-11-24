@@ -17,7 +17,7 @@ gem 'pg', '~> 1.5', '>= 1.5.4'
 gem "puma", "~> 5.0"
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
+# gem "importmap-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
@@ -85,3 +85,5 @@ group :test do
 end
 
 gem "cssbundling-rails"
+
+gem 'jsbundling-rails'

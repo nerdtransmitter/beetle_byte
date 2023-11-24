@@ -2,11 +2,21 @@
   "name": "app",
   "private": "true",
   "dependencies": {
+    "@hotwired/turbo-rails": "^8.0.0-beta.1",
+    "@popperjs/core": "^2.11.8",
     "autoprefixer": "^10.4.16",
+    "bootstrap": "^5.3.2",
+    "confetti": "^2.0.3",
+    "daisyui": "^4.4.6",
+    "esbuild": "^0.19.7",
+    "js-confetti": "^0.11.0",
     "postcss": "^8.4.31",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "tailwindcss": "^3.3.5"
   },
   "scripts": {
-    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets --loader:.js=jsx"
   }
 }

@@ -1,7 +1,7 @@
 class TicketsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_ticket, only: %i[show edit update destroy close_ticket]
-  before_action :set_project, only: %i[new create edit update]
+  before_action :set_project, only: %i[index new create edit update]
   before_action :authorize_ticket, only: %i[new create show edit update destroy]
 
   def new
@@ -23,12 +23,17 @@ class TicketsController < ApplicationController
   def show
   end
 
-  def index # This is the index of all tickets for a project
-    @tickets = policy_scope(Ticket)
+  # def index # This is the index of all tickets for a project
+  #   @tickets = policy_scope(Ticket)
+  # end
+  def index
+    authorize @project, :show?
+    @tickets = @project.tickets
   end
 
   def all_tickets # This is the index of all tickets for all projects
     @tickets = policy_scope(Ticket)
+    authorize @tickets
     render :index
   end
 
