@@ -1,21 +1,6 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
 
+/* Export date: 24-11-2023 16:04:22 */
 module.exports = {
-  content: [
-    './public/*.html',
-    './app/helpers/**/*.rb',
-    './app/javascript/**/*.js',
-    './app/views/**/*.{erb,haml,html,slim}'
-  ],
-  // theme: {
-  //   extend: {
-  //     fontFamily: {
-  //       // sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-  //       sans: ['Karla', 'sans-serif'],
-  //       serif: ['Merriweather', 'serif'],
-  //     },
-  //   },
-  // },
   "theme": {
     "colors": {
       "white": "#FFFFFF",
@@ -222,10 +207,6 @@ module.exports = {
       }
     },
     "extend": {
-      "fontFamily": {
-        "heading": "Lexend",
-        "body": "Manrope"
-      },
       "fontSize": {
         "t1": [
           "0.6875rem",
@@ -307,6 +288,10 @@ module.exports = {
         "s19": "16rem",
         "s20": "24rem"
       },
+      "fontFamily": {
+        "heading": "Lexend",
+        "body": "Manrope"
+      },
       "width": {
         "Sz_NONE": "0rem",
         "Sz0": "0.125rem",
@@ -386,10 +371,4 @@ module.exports = {
       }
     }
   }
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/container-queries'),
-  ]
 }

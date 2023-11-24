@@ -25,38 +25,14 @@ user = User.find_by(email: "adm2217@columbia.edu")
 lead_dev = User.find_by(email: "roxieb@beetlebyte.com")
 lead_dev2 = User.find_by(email: "diana@beetlebyte.com")
 
-# Create projects with this user as a creator
-puts "Creating bug tracker project..."
-Project.create!(
-  title: "Beetle_Byte",
-  description: "A bug tracker for development teams.",
-  start_date: Date.new(2023, 10, 9),
-  target_date: Date.new(2023, 11, 20),
-  created_by_id: user.id,
-  lead_dev_id: lead_dev.id
-)
+puts "Creating projects..."
+Project.create!([
+  { title: "Beetle_Byte", description: "A bug tracker for development teams.", start_date: Date.new(2023, 10, 9), target_date: Date.new(2023, 11, 20), created_by_id: user.id, lead_dev_id: lead_dev.id },
+  { title: "Portfolio", description: "A portfolio for Alessia Moison.", start_date: Date.new(2023, 04, 23), target_date: Date.new(2023, 12, 31), created_by_id: user.id, lead_dev_id: lead_dev.id },
+  { title: "Weather App", description: "A simple responsive weather app using React.", start_date: Date.new(2023, 04, 20), target_date: Date.new(2023, 12, 31), created_by_id: user.id, lead_dev_id: lead_dev2.id }
+])
 
-puts "Creating portfolio project..."
-Project.create!(
-  title: "Portfolio",
-  description: "A portfolio for Alessia Moison.",
-  start_date: Date.new(2023, 04, 23),
-  target_date: Date.new(2023, 12, 31),
-  created_by_id: user.id,
-  lead_dev_id: lead_dev.id
-)
-
-puts "Creating weather app project..."
-Project.create!(
-  title: "Weather App",
-  description: "A simple responsive weather app using React.",
-  start_date: Date.new(2023, 04, 20),
-  target_date: Date.new(2023, 12, 31),
-  created_by_id: user.id,
-  lead_dev_id: lead_dev2.id
-)
-
-puts "3 projects created!"
+puts "Projects successfully created!"
 
 
 #TICKETS
