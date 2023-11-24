@@ -15,14 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
   root.render(<App />);
 });
 
-// example component
-function ExampleComponent() {
-  return <h1>Hello from React</h1>;
-}
+// // example component
+// function ExampleComponent() {
+//   return <h1>Hello from React</h1>;
+// }
 
-document.addEventListener("DOMContentLoaded", () => {
-  ReactDOM.render(
-    <ExampleComponent />,
-    document.body.appendChild(document.createElement("div"))
-  );
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   ReactDOM.render(
+//     <ExampleComponent />,
+//     document.body.appendChild(document.createElement("div"))
+//   );
+// });
