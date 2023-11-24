@@ -11,6 +11,18 @@ class TicketPolicy < ApplicationPolicy
         user_tickets
       end
     end
+    # def resolve
+    #   # return scope.all if user.admin?
+    #   if user.admin?
+    #     scope.all
+    #   end
+
+    #   # if user_lead_dev_projects.any?
+    #   #   scope.where(project_id: user_lead_dev_projects)
+    #   # else
+    #   #   scope.all
+    #   # end
+    # end
 
     private
 
@@ -22,6 +34,10 @@ class TicketPolicy < ApplicationPolicy
       # Retrieve the IDs of projects where the user is the lead developer
       Project.where(lead_dev_id: user.id).pluck(:id)
     end
+  end
+
+  def all_tickets?
+    true
   end
 
   def show?

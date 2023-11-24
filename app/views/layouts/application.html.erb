@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
+  <head>
     <title>BeetleByte</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= javascript_importmap_tags %>
-    <%# Alpine.js %>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <%# Google Fonts %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +17,6 @@
     </style>
     <%# Tailwind CSS %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-
   </head>
 
   <body class="bg-gray-200 font-family-karla flex flex-col h-screen justify-between">
@@ -28,5 +26,9 @@
     </div>
     <%= render "shared/flashes" %>
     <%= render "shared/footer" %>
+
+    <div id="root"></div>
+    <%# Placed here to ensure that the page content is loaded before the JavaScript starts executing %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </body>
 </html>
