@@ -1,7 +1,8 @@
-// App.jsx
 import React, { useState } from "react";
+import TicketsTable from './TicketsTable';
+import TicketsKanban from './TicketsKanban';
 
-const App = () => {
+const TicketsIndex = () => {
   const [view, setView] = useState("table");
 
   const handleToggleView = (newView) => {
@@ -24,10 +25,10 @@ const App = () => {
           Kanban View
         </button>
       </div>
-      {view === "table" && <div className="tickets-table">Table Content</div>}
-      {view === "kanban" && <div className="kanban-board">Kanban Content</div>}
+      {view === "table" && <div className="tickets-table"><TicketsTable /></div>}
+      {view === "kanban" && <div className="kanban-board"><TicketsKanban /></div>}
     </div>
   );
 };
 
-export default App;
+export default TicketsIndex;
