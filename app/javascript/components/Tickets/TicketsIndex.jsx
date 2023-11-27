@@ -25,8 +25,8 @@ const TicketsIndex = () => {
           Kanban View
         </button>
       </div>
-      {view === "table" && <div className="tickets-table"><TicketsTable/></div>}
-      {view === "kanban" && <div className="kanban-board"><TicketsKanban/></div>}
+      {view === "table" && <div className="tickets-table"><TicketsTable /></div>}
+      {view === "kanban" && <div className="kanban-board"><TicketsKanban /></div>}
     </div>
   );
 };

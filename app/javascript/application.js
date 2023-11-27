@@ -6,23 +6,24 @@ import "@hotwired/turbo-rails"
 import "./confetti";
 
 import React from "react";
-import ReactDOM from "react-dom";
-import App from './components/App';
+import ReactDOM from "react-dom/client";
+// import App from './components/App';
 
+import TicketsIndex from './components/Tickets/TicketsIndex';
+import EmployeesTable from './components/Employees/EmployeesTable';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const root = ReactDOM.createRoot(document.getElementById('root'));
-  root.render(<App />);
+document.addEventListener('turbo:load', () => {
+  // Mount TicketsIndex if we find an element with 'tickets-index'
+  const ticketsElement = document.getElementById('tickets-index');
+  if (ticketsElement) {
+    ReactDOM.createRoot(ticketsElement).render(<TicketsIndex />);
+  }
+
+  // Mount EmployeesTable if we find an element with 'employees-table'
+  const employeesElement = document.getElementById('employees-table');
+  if (employeesElement) {
+    ReactDOM.createRoot(employeesElement).render(<EmployeesTable />);
+  }
+
+  // Add similar code for other components as needed
 });
-
-// // example component
-// function ExampleComponent() {
-//   return <h1>Hello from React</h1>;
-// }
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   ReactDOM.render(
-//     <ExampleComponent />,
-//     document.body.appendChild(document.createElement("div"))
-//   );
-// });
