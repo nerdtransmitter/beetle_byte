@@ -31,10 +31,16 @@ dev2 = User.find_by(email: "pw95@beetlebyte.com")
 # Attach photo to users
 puts "Attaching photos to users..."
 user.photo.attach(io: File.open('app/assets/images/alessia.jpeg'), filename: 'alessia.jpeg', content_type: 'image/jpeg')
+user.save
 lead_dev.photo.attach(io: File.open('app/assets/images/user2.jpeg'), filename: 'roxie.jpeg', content_type: 'image/jpeg')
+lead_dev.save
 lead_dev2.photo.attach(io: File.open('app/assets/images/user3.jpeg'), filename: 'diana.jpeg', content_type: 'image/jpeg')
+lead_dev2.save
 dev.photo.attach(io: File.open('app/assets/images/user1.jpeg'), filename: 'user1.jpeg', content_type: 'image/jpeg')
-dev2.photo.attach(io: File.open('app/assets/images/user4.jpeg'), filename: 'user4.jpeg', content_type: 'image/jpeg') 
+dev.save
+dev2.photo.attach(io: File.open('app/assets/images/user4.jpeg'), filename: 'user4.jpeg', content_type: 'image/jpeg')
+dev2.save
+
 
 
 puts "Creating projects..."
