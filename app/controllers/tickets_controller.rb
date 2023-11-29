@@ -34,6 +34,7 @@ class TicketsController < ApplicationController
   def all_tickets # This is the index of all tickets for all projects
     @tickets = policy_scope(Ticket)
     authorize @tickets
+
     render :index
   end
 

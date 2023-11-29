@@ -1,4 +1,7 @@
 <!-- index.html.erb -->
 <h1>All tickets</h1>
 
-<div id="tickets-index"></div>
+<%# Render data-project-id conditional depending on routing? %>
+<%# use of the safe navigation operator (&.) to handle cases where @project might be nil (which will be the case for the all_tickets view). %>
+
+<div id="tickets-index" data-tickets="<%= @tickets.to_json %>" data-project-id="<%= @project&.id %>"></div>
