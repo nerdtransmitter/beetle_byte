@@ -29,11 +29,16 @@ class TicketsController < ApplicationController
   def index
     authorize @project, :show?
     @tickets = @project.tickets
+
+    render json: @tickets
   end
 
   def all_tickets # This is the index of all tickets for all projects
     @tickets = policy_scope(Ticket)
     authorize @tickets
+
+    render json: @tickets
+
     render :index
   end
 
