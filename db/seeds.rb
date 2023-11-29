@@ -24,6 +24,18 @@ user = User.find_by(email: "adm2217@columbia.edu")
 # Find existing Lead Developer user
 lead_dev = User.find_by(email: "roxieb@beetlebyte.com")
 lead_dev2 = User.find_by(email: "diana@beetlebyte.com")
+# Find existing developer to assign to ticket
+dev = User.find_by(email: "tommy@beetlebyte.com")
+dev2 = User.find_by(email: "pw95@beetlebyte.com")
+
+# Attach photo to users
+puts "Attaching photos to users..."
+user.photo.attach(io: File.open('app/assets/images/alessia.jpeg'), filename: 'alessia.jpeg', content_type: 'image/jpeg')
+lead_dev.photo.attach(io: File.open('app/assets/images/user2.jpeg'), filename: 'roxie.jpeg', content_type: 'image/jpeg')
+lead_dev2.photo.attach(io: File.open('app/assets/images/user3.jpeg'), filename: 'diana.jpeg', content_type: 'image/jpeg')
+dev.photo.attach(io: File.open('app/assets/images/user1.jpeg'), filename: 'user1.jpeg', content_type: 'image/jpeg')
+dev2.photo.attach(io: File.open('app/assets/images/user4.jpeg'), filename: 'user4.jpeg', content_type: 'image/jpeg') 
+
 
 puts "Creating projects..."
 Project.create!([
@@ -40,9 +52,7 @@ puts "Projects successfully created!"
 project = Project.find_by(title: "Beetle_Byte")
 lead_dev1 = project.lead_dev
 
-# Find existing developer to assign to ticket
-dev = User.find_by(email: "tommy@beetlebyte.com")
-dev2 = User.find_by(email: "pw95@beetlebyte.com")
+
 
 # Create tickets with this project as a parent
 puts "Creating tickets..."
