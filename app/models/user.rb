@@ -20,14 +20,14 @@ class User < ApplicationRecord
   has_many :created_tickets, class_name: 'Ticket', foreign_key: 'created_by_id'
   has_many :modified_tickets, class_name: 'Ticket', foreign_key: 'modified_by_id'
   has_many :dev_tickets, class_name: 'Ticket', foreign_key: 'dev_id'
-  # has_one_attached :photo
+  has_one_attached :photo
 
   # CALLBACKS
 
   def full_name
     "#{first_name.capitalize} #{last_name.capitalize}"
   end
-  
+
   def as_json(options = {})
     super(options.merge({methods: :full_name}))
   end
