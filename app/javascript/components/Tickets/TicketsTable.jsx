@@ -19,7 +19,9 @@ function TicketsTable({tickets}) {
             <th scope="col" className="py-3 px-6">
               Assigned To
             </th>
-            {/* Add more columns as needed */}
+            <th scope="col" className="py-3 px-6">
+              Project
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -28,7 +30,8 @@ function TicketsTable({tickets}) {
               <td className="py-4 px-6">{ticket.id}</td>
               <td className="py-4 px-6">{ticket.summary}</td>
               <td className="py-4 px-6">{ticket.status}</td>
-              <td className="py-4 px-6">{ticket.dev.first_name}</td>
+              <td className="py-4 px-6">{ticket.dev?.full_name}</td>
+              <td className="py-4 px-6">{ticket.project.title}</td>
               {/* Add more cells as needed */}
             </tr>
           ))}

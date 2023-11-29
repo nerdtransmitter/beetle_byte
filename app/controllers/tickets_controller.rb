@@ -28,11 +28,11 @@ class TicketsController < ApplicationController
   # end
   def index
     authorize @project, :show?
-    @tickets = @project.tickets
+    @tickets = @project.tickets.includes(:created_by, :modified_by, :dev, :project).order(:status, :priority, :due_date, :created_at)
   end
 
   def all_tickets # This is the index of all tickets for all projects
-    @tickets = policy_scope(Ticket)
+    @tickets = policy_scope(Ticket).includes(:created_by, :modified_by, :dev, :project).order(:status, :priority, :due_date, :created_at)
     authorize @tickets
 
     render :index

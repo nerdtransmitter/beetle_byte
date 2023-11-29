@@ -4,4 +4,8 @@
 <%# Render data-project-id conditional depending on routing? %>
 <%# use of the safe navigation operator (&.) to handle cases where @project might be nil (which will be the case for the all_tickets view). %>
 
-<div id="tickets-index" data-tickets="<%= @tickets.to_json %>" data-project-id="<%= @project&.id %>"></div>
+<div
+  id="tickets-index"
+  data-tickets="<%= tickets_json(@tickets).to_json %>"
+  data-tickets="<%= json_with_associations(@tickets, {created_by: [:full_name], modified_by: [:full_name], dev: [:full_name], project: []}).to_json %>"
+  data-project-id="<%= @project&.id %>"></div>

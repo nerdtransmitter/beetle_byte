@@ -25,9 +25,9 @@ function TicketsIndex({ tickets, projectId }) {
           Kanban View
         </button>
       </div>
-      
+
       {/* Conditionally Render Views */}
-      {viewMode === 'table' ? <TicketsTable tickets={tickets} /> : <TicketsKanban tickets={tickets} />}
+      {viewMode === 'table' ? <TicketsTable tickets={tickets} projectId={projectId}/> : <TicketsKanban tickets={tickets} projectId={projectId}/>}
     </div>
   );
 };
