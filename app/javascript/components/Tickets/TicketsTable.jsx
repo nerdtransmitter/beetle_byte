@@ -1,7 +1,7 @@
 // TicketsTable.jsx
 import React, { useState, useEffect } from 'react';
 
-function TicketsTable() {
+function TicketsTable({tickets}) {
   return (
     <div className="overflow-x-auto relative">
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -26,9 +26,9 @@ function TicketsTable() {
           {tickets.map((ticket) => (
             <tr key={ticket.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
               <td className="py-4 px-6">{ticket.id}</td>
-              <td className="py-4 px-6">{ticket.title}</td>
+              <td className="py-4 px-6">{ticket.summary}</td>
               <td className="py-4 px-6">{ticket.status}</td>
-              <td className="py-4 px-6">{ticket.assignedTo}</td>
+              <td className="py-4 px-6">{ticket.dev.first_name}</td>
               {/* Add more cells as needed */}
             </tr>
           ))}

@@ -2,18 +2,8 @@ import React, { useState, useEffect } from "react";
 import TicketsTable from './TicketsTable';
 import TicketsKanban from './TicketsKanban';
 
-function TicketsIndex({ projectId }) {
-  const [tickets, setTickets] = useState([]);
+function TicketsIndex({ tickets, projectId }) {
   const [viewMode, setViewMode] = useState("table"); // or "kanban"
-
-  useEffect(() => {
-    const endpoint = projectId ? `/projects/${projectId}/tickets` : '/tickets/all_tickets';
-    fetch(endpoint)
-      .then(response => response.json())
-      .then(data => setTickets(data))
-      .catch(error => console.error('Error fetching data: ', error));
-  }, [projectId]);
-
 
   const handleToggleViewMode = (newViewMode) => {
     setViewMode(newViewMode);
@@ -35,6 +25,7 @@ function TicketsIndex({ projectId }) {
           Kanban View
         </button>
       </div>
+      
       {/* Conditionally Render Views */}
       {viewMode === 'table' ? <TicketsTable tickets={tickets} /> : <TicketsKanban tickets={tickets} />}
     </div>

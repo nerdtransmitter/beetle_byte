@@ -16,7 +16,9 @@ document.addEventListener('turbo:load', () => {
   // Mount TicketsIndex if we find an element with 'tickets-index'
   const ticketsElement = document.getElementById('tickets-index');
   if (ticketsElement) {
-    ReactDOM.createRoot(ticketsElement).render(<TicketsIndex />);
+    const ticketsData = JSON.parse(ticketsElement.dataset.tickets || '[]'); // Access data attribute
+    const projectId = ticketsElement.dataset.projectId; // Access project; may be undefined if @project is nil
+    ReactDOM.createRoot(ticketsElement).render(<TicketsIndex tickets={ticketsData} projectId={projectId} />);
   }
 
   // Mount EmployeesTable if we find an element with 'employees-table'
