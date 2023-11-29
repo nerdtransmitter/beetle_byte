@@ -2,15 +2,6 @@
 import React, { useState, useEffect } from 'react';
 
 function TicketsTable() {
-  const [tickets, setTickets] = useState([]);
-  
-  useEffect(() => {
-    fetch('/path_to_your_tickets_endpoint')
-      .then(response => response.json())
-      .then(data => setTickets(data))
-      .catch(error => console.error('Error fetching data: ', error));
-  }, []);
-
   return (
     <div className="overflow-x-auto relative">
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
