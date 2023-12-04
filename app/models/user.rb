@@ -14,7 +14,6 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }, if: -> { new_record? || changes[:password_digest] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:password_digest] }
 
-
   # ASSOCIATIONS
   has_many :projects
   has_many :created_tickets, class_name: 'Ticket', foreign_key: 'created_by_id'
