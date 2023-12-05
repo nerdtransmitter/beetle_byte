@@ -91,3 +91,5 @@ gem "cssbundling-rails"
 gem 'jsbundling-rails'
 
 gem 'cloudinary'
+
+gem 'tailwindcss-rails'

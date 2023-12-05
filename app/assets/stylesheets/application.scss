@@ -7,10 +7,6 @@
 @import "bootstrap";
 @import "font-awesome";
 
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/forms";
-@import "tailwindcss/utilities";
 
 // Your CSS partials
 @import "components/index";
@@ -19,6 +15,10 @@
 
 /* Your custom styles */
 
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/forms";
+@import "tailwindcss/utilities";
 
 html {
   font-family: "Karla", "sans-serif" !important;
