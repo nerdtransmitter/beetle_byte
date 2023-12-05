@@ -56,6 +56,8 @@ gem 'bootstrap', '~> 5.3.2'
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
+
+gem 'simple_form-tailwind'
 gem 'psych', '~>3.0'
 gem 'devise'
 gem 'pundit'
@@ -89,4 +91,3 @@ gem "cssbundling-rails"
 gem 'jsbundling-rails'
 
 gem 'cloudinary'
-
